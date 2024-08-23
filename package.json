@@ -1,0 +1,106 @@
+{
+  "name": "vitepress-plugin-demoblock",
+  "version": "1.0.2",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LorexIQ/vitepress-plugin-demoblock"
+  },
+  "homepage": "https://github.com/LorexIQ/vitepress-plugin-demoblock/#readme",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./theme": {
+      "import": "./dist/theme/index.mjs",
+      "types": "./dist/theme/index.d.ts"
+    },
+    "./dist/theme": {
+      "import": "./dist/theme/index.mjs"
+    },
+    "./theme/**": {
+      "import": "./dist/theme/**",
+      "types": "./dist/theme/index.d.ts"
+    },
+    "./dist/theme/**": {
+      "import": "./dist/theme/**",
+      "types": "./dist/theme/index.d.ts"
+    },
+    "./dist/theme/**/*.vue": {
+      "import": "./dist/theme/**/*.vue"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh-CN.md",
+    "theme",
+    "banner.png"
+  ],
+  "scripts": {
+    "build": "run-s clean ts:build un:build cp:theme",
+    "clean": "rimraf dist theme",
+    "un:build": "unbuild",
+    "ts:build": "tsup",
+    "cp:theme": "cpx dist/theme/index.d.ts ./theme",
+    "docs:dev": "vitepress dev example",
+    "docs:build": "vitepress build example",
+    "docs:preview": "vitepress serve example",
+    "release": "pnpm exec bumpp"
+  },
+  "keywords": [
+    "vitepress",
+    "markdown",
+    "vite",
+    "vite-plugin",
+    "vitepress-code-block-demo",
+    "vitepress-demo"
+  ],
+  "author": "LorexIQ",
+  "license": "MIT",
+  "devDependencies": {
+    "@mistjs/eslint-config-vue": "^0.0.2",
+    "@mistjs/tsconfig-vue": "^0.0.3",
+    "@types/fs-extra": "^9.0.13",
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^18.11.9",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "bumpp": "^8.2.1",
+    "cpx": "^1.5.0",
+    "eslint": "^8.27.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "tsup": "^6.4.0",
+    "typescript": "^4.8.4",
+    "unbuild": "^0.8.11",
+    "vite": "^4.0.1",
+    "vite-plugin-inspect": "^0.7.10",
+    "vitepress": "1.0.0-alpha.31",
+    "vitest": "^0.25.7",
+    "vue": "^3.2.41"
+  },
+  "peerDependencies": {
+    "vitepress": "^1.0.0-alpha.20",
+    "vue": "^3.2.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "fast-glob": "^3.2.12",
+    "fs-extra": "^10.1.0",
+    "magic-string": "^0.26.7",
+    "markdown-it": "^13.0.1",
+    "posthtml-parser": "^0.11.0",
+    "posthtml-render": "^3.0.0"
+  }
+}
