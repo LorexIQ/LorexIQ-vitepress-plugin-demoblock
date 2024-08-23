@@ -1,8 +1,10 @@
 <template>
-  <div class="demo-block">
-    <div class="demo-block__code" v-html="highlightCode.innerHTML" />
-    <OpenExample v-if="link" @click="openRunner"/>
-  </div>
+  <ClientOnly>
+    <div class="demo-block">
+      <div class="demo-block__code" v-html="highlightCode.innerHTML" />
+      <OpenExample v-if="link" @click="openRunner"/>
+    </div>
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
@@ -11,7 +13,7 @@ import {
   defineAsyncComponent, h,
   onMounted,
   ref,
-  shallowRef
+  shallowRef,
 } from 'vue'
 import OpenExample from './icons/OpenExample.vue'
 
