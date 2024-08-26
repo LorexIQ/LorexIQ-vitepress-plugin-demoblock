@@ -45,11 +45,14 @@ onMounted(async() => {
 })
 
 function openRunner() {
-  window.parent.postMessage(JSON.stringify({
-    linkValue: link.value,
-    componentSrc: props.src,
-    location: window.location
-  }), '*');
+  window.parent.postMessage({
+    type: 'fromViteressDemoblock',
+    message: {
+      linkValue: link.value,
+      componentSrc: props.src,
+      location: window.location.href
+    }
+  }, '*');
 }
 </script>
 
