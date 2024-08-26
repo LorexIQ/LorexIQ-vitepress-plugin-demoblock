@@ -46,7 +46,7 @@ onMounted(async() => {
 
 function openRunner() {
   window.parent.postMessage({
-    type: 'fromViteressDemoblock',
+    type: 'fromVitepressDemoblock',
     message: {
       linkValue: link.value,
       componentSrc: props.src,
