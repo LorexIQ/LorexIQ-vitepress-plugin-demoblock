@@ -45,11 +45,11 @@ onMounted(async() => {
 })
 
 function openRunner() {
-  window.parent.postMessage({
+  window.parent.postMessage(JSON.stringify({
     linkValue: link.value,
     componentSrc: props.src,
     location: window.location
-  }, '*');
+  }), '*');
 }
 </script>
 
