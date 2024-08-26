@@ -45,7 +45,11 @@ onMounted(async() => {
 })
 
 function openRunner() {
-  window.location.replace(link.value + `?src=${encodeURIComponent(props.src)}`);
+  window.parent.postMessage({
+    linkValue: link.value,
+    componentSrc: props.src,
+    location: window.location
+  }, '*');
 }
 </script>
 
